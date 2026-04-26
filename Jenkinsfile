@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "srushti6806/app-image1"
-        TAG = "v1"
+        TAG = "v2"
     }
 
     stages {
@@ -34,7 +34,7 @@ pipeline {
         stage('Push Image') {
     steps {
         retry(3) {
-            bat 'docker push srushti6806/app-image1:v1'
+            bat 'docker push %DOCKER_IMAGE%:%TAG%'
         }
     }
 }
