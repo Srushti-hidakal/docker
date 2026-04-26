@@ -32,10 +32,11 @@ pipeline {
         }
 
         stage('Push Image') {
-            steps {
-                // Fixed: Changed 'sh' to 'bat'
-                bat "docker push %DOCKER_IMAGE%:%TAG%"
-            }
+    steps {
+        retry(3) {
+            bat 'docker push srushti6806/app-image1:v1'
         }
+    }
+}
     }
 }
